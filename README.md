@@ -1,5 +1,5 @@
 <div style="display: flex; justify-content: center; width: 100%; align-items: center; flex-direction: column;">
-<img src="./public/imgs/logo.png" width="150">
+<img src="./public/imgs/logo.svg" width="150" heigth="150">
 <h1>NodeJs Process Manager API</h1>
 </div>
 
