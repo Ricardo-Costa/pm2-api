@@ -3,10 +3,10 @@ const exec = util.promisify(require("child_process").exec);
 const { StatusEventError } = require("../../infrastructure/erros");
 const BaseService = require("./base.service");
 
-class StatusService extends BaseService {
+class StatusAllService extends BaseService {
 
-    async run({ app_name }) {
-        const { stdout, stderr } = await exec(`npx pm2 status ${app_name}`);
+    async run() {
+        const { stdout, stderr } = await exec(`npx pm2 status all`);
 
         if (stderr) throw new StatusEventError(stderr, res);
 
@@ -15,4 +15,4 @@ class StatusService extends BaseService {
 
 }
 
-module.exports = new StatusService();
+module.exports = new StatusAllService();

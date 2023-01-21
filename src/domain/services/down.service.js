@@ -2,8 +2,9 @@ const util = require("util");
 const exec = util.promisify(require("child_process").exec);
 const { DownEventError, UpEventError } = require("./../../infrastructure/erros");
 const { appExists } = require("./../util/check");
+const BaseService = require("./base.service");
 
-class DownService {
+class DownService extends BaseService {
 
     async run({ app_name }, res) {
         
