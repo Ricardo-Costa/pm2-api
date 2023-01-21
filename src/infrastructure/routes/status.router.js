@@ -7,12 +7,12 @@ class StatusRouter extends Router {
 
     async route(req, res, next) {
         try {
-            const isValid = await StatusValidation.isValid(req.body);
+            const isValid = await StatusValidation.isValid(req.params);
             if (!isValid) {
                 throw new InvalidParamError('App name is required or process not exists.');
             }
     
-            const stdout = await StatusService.run(req.body, res);
+            const stdout = await StatusService.run(req.params, res);
     
             super.showContentSuccess(res, stdout);
             

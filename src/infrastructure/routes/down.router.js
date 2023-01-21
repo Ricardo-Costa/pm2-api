@@ -8,12 +8,12 @@ class DownRouter extends Router {
     async route(req, res, next) {
         try {
 
-            const isValid = await DownValidation.isValid(req.body);
+            const isValid = await DownValidation.isValid(req.params);
             if (!isValid) {
                 throw new InvalidParamError('App name is required or process not exists.');
             }
     
-            const stdout = await DownService.run(req.body, res);
+            const stdout = await DownService.run(req.params, res);
     
             super.showContentSuccess(res, stdout);
 
