@@ -1,5 +1,6 @@
 const configs = require("../configs/config");
 const express = require("express");
+const HomeRouter = require("./routes/home.router");
 const UpRouter = require("./routes/up.router");
 const DownRouter = require("./routes/down.router");
 const StatusRouter = require("./routes/status.router");
@@ -15,11 +16,10 @@ class Application {
         await this.middlewares();
         await this.routes();
 
-        this.server.listen(configs.port, "0.0.0.0");
-        this.server.on("error", console.error);
-        this.server.on("listening", () => {
+        this.server.listen(configs.port, "0.0.0.0", () => {
             console.log(`Listening on port ${configs.port}`)
         });
+        this.server.on("error", console.error);
     }
 
     async middlewares() {
@@ -28,9 +28,10 @@ class Application {
     }
 
     async routes() {
-        this.router.post("/up", UpRouter.route);
-        this.router.post("/status", StatusRouter.route);
-        this.router.post("/down", DownRouter.route);
+        this.router.get("/", HomeRouter.route);
+        this.router.get("/up/:app_name", UpRouter.route);
+        this.router.get("/status/:app_name", StatusRouter.route);
+        this.router.get("/down/:app_name", DownRouter.route);
 
         this.server.use(this.router)
     }
