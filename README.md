@@ -5,6 +5,28 @@
 
 > This project provides a powerful API that deploy nodejs web services apps, through child_process tools. You will have a rest API application to call resources and do it dynamically.
 
+**Requirements:**<br/>
+- Nodejs >= 14
+- npm >= 6.*
+
+**Start Local:**<br/>
+```bash
+npm run start:dev
+```
+
+**Start Prod:**<br/>
+```bash
+npm run start
+```
+
+**Api Resources:**<br/>
+- List all apps:
+  - **http://localhost/status**
+- Start a new app:
+  - **http://localhost/up/< app-name >**
+
+<hr/>
+
 Repository:
 - https://github.com/Ricardo-Costa/nodejs-pm-api
 
