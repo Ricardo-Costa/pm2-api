@@ -30,10 +30,11 @@ class Application {
 
     async routes() {
         this.router.get("/", HomeRouter.route);
-        this.router.get("/up/:app_name", UpRouter.route);
+        this.router.post("/up/:app_name", UpRouter.route);
+        this.router.get("/status", HomeRouter.route);
         this.router.get("/status/:app_name", StatusRouter.route);
+        this.router.get("/down", downAllRouter.route);
         this.router.get("/down/:app_name", DownRouter.route);
-        this.router.get("/down-all", downAllRouter.route);
 
         this.server.use(this.router)
     }

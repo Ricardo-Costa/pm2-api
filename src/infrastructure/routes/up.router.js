@@ -7,11 +7,11 @@ class UpRouter extends Router {
 
     async route(req, res, next) {
         try {
-            if (!UpValidation.isValid(req.params)) {
-                throw new InvalidParamError('App name is required.');
+            if (!UpValidation.isValid(req)) {
+                throw new InvalidParamError('App name and app path is required.');
             }
     
-            const stdout = await UpService.run(req.params, res);
+            const stdout = await UpService.run(req, res);
     
             super.showContentSuccess(res, stdout);
         } catch (err) {
