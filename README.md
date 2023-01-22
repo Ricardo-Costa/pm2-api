@@ -1,6 +1,7 @@
 <div style="display: flex; justify-content: center; width: 100%; align-items: center; flex-direction: column;">
 <img src="./public/imgs/logo.svg" width="150" heigth="150">
-<h1>NodeJs Process Manager API</h1>
+<h1>PM2 API</h1>
+<h4>A PM2 NodeJs Process Manager API</h4>
 </div>
 
 > This project provides a powerful API that deploy nodejs web services apps, through child_process tools. You will have a rest API application to call resources and do it dynamically.
@@ -18,19 +19,36 @@ npm run start:dev
 ```bash
 npm run start
 ```
+Application start at: `http://localhost:7000`
 
 **Api Resources:**<br/>
-- List all apps:
-  - **http://localhost/status**
 - Start a new app:
-  - **http://localhost/up/< app-name >**
+  - POST
+  - Route: **http://localhost/up/< app-name >**
+  - Payload:
+    ```json
+    { "appPath":"<my-api/main/file/app.js>" }
+    ```
+- Status of all apps:
+  - GET
+  - Route: **http://localhost/status**
+- Status of an apps:
+  - GET
+  - Route: **http://localhost/status/< app-name >**
+- Down all apps:
+  - GET
+  - Route: **http://localhost/down**
+- Down an app:
+  - GET
+  - Route: **http://localhost/down/< app-name >**
 
 <hr/>
 
 Repository:
-- https://github.com/Ricardo-Costa/nodejs-pm-api
+- https://github.com/Ricardo-Costa/pm2-api
 
 References:
+- https://pm2.keymetrics.io/docs/usage/quick-start/
 - https://nodejs.org/api/child_process.html
 
 Credits Logo:
