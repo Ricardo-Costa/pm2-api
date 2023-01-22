@@ -6,12 +6,20 @@ const BaseService = require("./base.service");
 
 class UpService extends BaseService {
 
-    async run({ params: { app_name }, body: { appPath }}, res) {
+    async run({ params: { app_name }, body: { appPath, mode }}, res) {
 
         const exists = await appExists(app_name);
         if (exists) throw new UpEventError('App already exists.', res);
 
-        const { stdout, stderr } = await exec(`npx pm2 start ${__dirname}/../../sub-apps/${appPath} --name=${app_name} --no-autorestart`);
+        if (mode && (![ "cluster" ].includes(mode))) {
+            throw new UpEventError('Invalid mode.', res);
+        }
+
+        if (mode) {
+            var { stdout, stderr } = await exec(`npx pm2 start ${__dirname}/../../sub-apps/${appPath} --name=${app_name} -i max --no-autorestart`);
+        } else {
+            var { stdout, stderr } = await exec(`npx pm2 start ${__dirname}/../../sub-apps/${appPath} --name=${app_name} --no-autorestart`);
+        }
 
         if (stderr) throw new UpEventError(stderr, res);
 

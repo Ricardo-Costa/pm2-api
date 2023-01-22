@@ -30,7 +30,10 @@ Put all your apis sources in folder `src/sub-apps`, then especify the main file 
   - Route: **http://localhost/up/< app-name >**
   - Payload:
     ```json
-    { "appPath":"<my-api/main/file/app.js>" }
+    {
+      "appPath": "<my-api/main/file/app.js>",
+      "mode": "cluster" // OPTIONAL - To enable the cluster mode
+    }
     ```
 - Status of all apps:
   - GET
