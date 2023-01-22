@@ -21,6 +21,9 @@ npm run start
 ```
 Application start at: `http://localhost:7000`
 
+**APIs content:**<br/>
+Put all your apis sources in folder `src/sub-apps`, then especify the main file of project in `appPath` of the payload to Route `/up/< app-name >` to start api correctly.
+
 **Api Resources:**<br/>
 - Start a new app:
   - POST
