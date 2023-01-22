@@ -4,6 +4,7 @@ const HomeRouter = require("./routes/home.router");
 const UpRouter = require("./routes/up.router");
 const DownRouter = require("./routes/down.router");
 const StatusRouter = require("./routes/status.router");
+const downAllRouter = require("./routes/down-all.router");
 
 class Application {
 
@@ -32,6 +33,7 @@ class Application {
         this.router.get("/up/:app_name", UpRouter.route);
         this.router.get("/status/:app_name", StatusRouter.route);
         this.router.get("/down/:app_name", DownRouter.route);
+        this.router.get("/down-all", downAllRouter.route);
 
         this.server.use(this.router)
     }

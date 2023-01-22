@@ -13,6 +13,18 @@ const appExists = async appName => {
     }
 }
 
+const appStatusAll = async () => {
+    try {
+
+        const { stdout, stderr } = await exec(`npx pm2 status all`);
+        return !stderr && !!stdout.trim();
+
+    } catch(err) {
+        return false;
+    }
+}
+
 module.exports = {
-    appExists
+    appExists,
+    appStatusAll
 }
