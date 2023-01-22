@@ -6,7 +6,7 @@ const BaseService = require("./base.service");
 class StatusService extends BaseService {
 
     async run({ app_name }) {
-        const { stdout, stderr } = await exec(`npx pm2 status ${app_name}`);
+        const { stdout, stderr } = await exec(`pm2 status ${app_name}`);
 
         if (stderr) throw new StatusEventError(stderr, res);
 

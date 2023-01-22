@@ -16,9 +16,9 @@ class UpService extends BaseService {
         }
 
         if (mode) {
-            var { stdout, stderr } = await exec(`npx pm2 start ${__dirname}/../../sub-apps/${appPath} --name=${app_name} -i max --no-autorestart`);
+            var { stdout, stderr } = await exec(`pm2 start ${__dirname}/../../sub-apps/${appPath} --name=${app_name} -i max --no-autorestart`);
         } else {
-            var { stdout, stderr } = await exec(`npx pm2 start ${__dirname}/../../sub-apps/${appPath} --name=${app_name} --no-autorestart`);
+            var { stdout, stderr } = await exec(`pm2 start ${__dirname}/../../sub-apps/${appPath} --name=${app_name} --no-autorestart`);
         }
 
         if (stderr) throw new UpEventError(stderr, res);

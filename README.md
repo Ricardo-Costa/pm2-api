@@ -9,6 +9,7 @@
 **Requirements:**<br/>
 - Nodejs >= 14.*
 - npm >= 6.*
+- pm2 >= 5.* - Install globally: `npm install pm2@latest -g`
 
 **Start Local:**<br/>
 ```bash

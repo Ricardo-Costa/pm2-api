@@ -8,7 +8,7 @@ class DownService extends BaseService {
 
     async run({ app_name }, res) {
         
-        const { stdout, stderr } = await exec(`npx pm2 delete ${app_name}`);
+        const { stdout, stderr } = await exec(`pm2 delete ${app_name}`);
 
         if (stderr) throw new DownEventError(stderr, res);
 

@@ -7,7 +7,7 @@ const BaseService = require("./base.service");
 class DownAllService extends BaseService {
 
     async run(res) {
-        const { stdout, stderr } = await exec(`npx pm2 delete all`);
+        const { stdout, stderr } = await exec(`pm2 delete all`);
 
         if (stderr) throw new DownEventError(stderr, res);
 

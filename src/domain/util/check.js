@@ -5,7 +5,7 @@ const exec = util.promisify(require("child_process").exec);
 const appExists = async appName => {
     try {
 
-        const { stdout, stderr } = await exec(`npx pm2 status ${appName} | grep ${appName}`);
+        const { stdout, stderr } = await exec(`pm2 status ${appName} | grep ${appName}`);
         return !stderr && !!stdout.trim();
 
     } catch(err) {
@@ -16,7 +16,7 @@ const appExists = async appName => {
 const appStatusAll = async () => {
     try {
 
-        const { stdout, stderr } = await exec(`npx pm2 status all`);
+        const { stdout, stderr } = await exec(`pm2 status all`);
         return !stderr && !!stdout.trim();
 
     } catch(err) {
